@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://caxm6puy7ot33"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_4o7lo"]
+[ext_resource type="Texture2D" uid="uid://d2aiaxmbtmuvh" path="res://player (3).png" id="1_gsnb2"]
+[ext_resource type="PackedScene" uid="uid://kncb8l8p1hg6" path="res://colliision_area_component.tscn" id="2_sajy2"]
+[ext_resource type="PackedScene" uid="uid://ceuu3iigsyoot" path="res://health_component.tscn" id="4_ucbbs"]
+[ext_resource type="Script" path="res://UI_Inventoy.gd" id="5_oq7wb"]
+[ext_resource type="PackedScene" uid="uid://bigwso8kx14ex" path="res://inventory.tscn" id="6_2an7i"]
+[ext_resource type="PackedScene" uid="uid://e85rkwen4mia" path="res://inventory_component.tscn" id="7_pc1b6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3fien"]
+radius = 3.0
+height = 8.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inventory")]
+position = Vector2(511, 361)
+script = ExtResource("1_4o7lo")
+inventory = NodePath("InventoryComponent")
+
+[node name="UI_Inventoy" type="CanvasLayer" parent="."]
+script = ExtResource("5_oq7wb")
+
+[node name="Inventory" parent="UI_Inventoy" instance=ExtResource("6_2an7i")]
+visible = false
+
+[node name="CollisionBase" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3fien")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -2)
+texture = ExtResource("1_gsnb2")
+
+[node name="ColliisionAreaComponent" parent="." instance=ExtResource("2_sajy2")]
+scale = Vector2(0.442168, 1.08305)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.4, 1.4)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_ucbbs")]
+
+[node name="InventoryComponent" parent="." instance=ExtResource("7_pc1b6")]
+
+[connection signal="area_entered" from="ColliisionAreaComponent" to="." method="_on_colliision_area_component_area_entered"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ixqfepp1mkxs"]
+
+[ext_resource type="Texture2D" uid="uid://iespwjsstyj7" path="res://Assets/Interface/asfalt--light--1920x1080.png" id="1_mjaa8"]
+[ext_resource type="PackedScene" uid="uid://caxm6puy7ot33" path="res://Scenes/player.tscn" id="2_vk4nk"]
+[ext_resource type="PackedScene" uid="uid://bnd3lqu5xnv45" path="res://Scenes/item.tscn" id="3_vl8br"]
+[ext_resource type="Texture2D" uid="uid://d2aiaxmbtmuvh" path="res://Assets/Player/player (3).png" id="4_17d2h"]
+
+[node name="Map" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_mjaa8")
+
+[node name="Player" parent="." instance=ExtResource("2_vk4nk")]
+
+[node name="Item" parent="." instance=ExtResource("3_vl8br")]
+position = Vector2(328, 266)
+texture = ExtResource("4_17d2h")
+quantity = 11
+
+[node name="Item2" parent="." instance=ExtResource("3_vl8br")]
+position = Vector2(343, 343)
+texture = ExtResource("4_17d2h")
+quantity = 22
+
+[node name="Item3" parent="." instance=ExtResource("3_vl8br")]
+position = Vector2(458, 258)
+texture = ExtResource("4_17d2h")
+quantity = 33

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnd3lqu5xnv45"]
+
+[ext_resource type="Texture2D" uid="uid://c8poft1xl6gcj" path="res://Assets/Interface/slot.png" id="1_uq50m"]
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_xg7sp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vx6ah"]
+radius = 7.0
+
+[node name="Item" type="Area2D" groups=["drop"]]
+modulate = Color(1, 0.994191, 0.993187, 1)
+position = Vector2(203, 130)
+script = ExtResource("1_xg7sp")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vx6ah")
+
+[node name="Preview" type="Sprite2D" parent="."]
+modulate = Color(0, 0.705863, 1.15514e-06, 1)
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_uq50m")
+
+[node name="LabelName" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
